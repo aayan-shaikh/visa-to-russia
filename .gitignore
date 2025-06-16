@@ -1,3 +1,31 @@
-.astro
-node_modules
+# Node modules
+node_modules/
+# Vite/Build output
+dist/
+.astro/
+# Astro cache
+.cache/
+# Local env files
+.env
+.env.*
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# Mac system files
+.DS_Store
+# VSCode settings (optional)
+.vscode/
+# Output from various tools
+*.local
+*.sublime-workspace
+*.sublime-project
+# OS generated files
+Thumbs.db
+# Netlify build output
+.netlify/
+# Optional: ignore lock files if you don't want to commit them
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
