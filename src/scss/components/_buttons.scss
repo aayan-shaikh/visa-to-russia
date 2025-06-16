@@ -1,0 +1,100 @@
+@use "../base/" as *;
+@use "../variables/" as *;
+
+// Simple button mixin with sensible defaults
+@mixin button($bg: $accent,
+    $color: $text-primary,
+    $padding: 1rem 1.5rem,
+    $radius: $border-radius,
+    $shadow: true) {
+    display: inline-block;
+    padding: $padding;
+    text-transform: uppercase;
+    background: $bg;
+    color: $color;
+    border: none;
+    border-radius: $radius;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+
+
+    @if $shadow {
+        box-shadow: 0 2px 4px rgba($bg, 0.2);
+    }
+
+    &:hover {
+        background: lighten($bg, 8%);
+        transform: translateY(-1px);
+
+        @if $shadow {
+            box-shadow: 0 4px 8px rgba($bg, 0.3);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Enhanced button with gradient and effects
+@mixin button-enhanced($bg: $primary,
+    $color: $text-primary,
+    $padding: 0.8rem 2rem,
+    $radius: $border-radius,
+    $lift: 2px,
+    $shimmer: false) {
+    @include button($bg, $color, $padding, $radius, $shadow: true);
+
+    background: linear-gradient(135deg, $bg, darken($bg, 10%));
+    position: relative;
+    overflow: hidden;
+
+    @if $shimmer {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(white, 0.2),
+                    transparent);
+            transition: left 0.6s ease;
+        }
+    }
+
+    &:hover {
+        background: linear-gradient(135deg, darken($bg, 5%), darken($bg, 15%));
+        transform: translateY(-$lift);
+        box-shadow: 0 #{$lift + 4px} 20px rgba($bg, 0.4);
+
+        @if $shimmer {
+            &::before {
+                left: 100%;
+            }
+        }
+    }
+}
+
+
+// Button styles for different contexts
+.btn-primary {
+    @include button($accent);
+}
+
+.btn-secondary {
+    @include button($secondary);
+}
+
+.btn-cta {
+    @include button-enhanced($accent, $shimmer: true);
+}
+
+// Default button element styling
+button {
+    @include button($color: black);
+}

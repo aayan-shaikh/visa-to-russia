@@ -1,0 +1,16 @@
+@use 'variables/' as *;
+@use 'base/' as *;
+@use 'components/' as *;
+
+
+
+
+.material-symbols-sharp {
+    vertical-align: middle;
+
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
