@@ -6,11 +6,11 @@ export interface Props {
 import "../scss/index.scss";
 const nav_links = [
   { name: "Home", href: "/" },
-  { name: "Visa Types", href: "/about" },
+  { name: "Visa Types", href: "/visa-types" },
   { name: "How It Works", href: "/#" },
   { name: "Why Choose Us", href: "/#" },
   { name: "FAQs", href: "/faq" },
-  { name: "Contact", href: "/contact" },
+  { name: "Apply", href: "/apply" },
 ];
 
 import { img } from "astro:assets";
@@ -110,7 +110,7 @@ const { title, description = "Visa to Russia from India" } = Astro.props;
             &copy; 2024 RussianVisaPro. All rights reserved.
           </p>
           <!-- CTA Button -->
-          <a href="/contact" class="btn-cta">Apply Now</a>
+          <a href="/apply" class="btn-cta">Apply Now</a>
         </div>
         <div class="footer__column">
           <h3>Quick Links</h3>

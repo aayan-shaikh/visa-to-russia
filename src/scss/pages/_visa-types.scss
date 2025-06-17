@@ -1,0 +1,205 @@
+@use "../variables/" as *;
+@use "../base/" as *;
+@use "../components/" as *;
+
+
+.container {
+    @media screen and (min-width: 768px) {
+
+        max-width: 70ch;
+        margin: auto;
+        padding-inline: 0rem;
+
+    }
+
+    padding-top: 8rem;
+    padding-inline: 2rem;
+
+    h1 {
+        line-height: 1.1;
+    }
+
+    h2 {
+        line-height: 1.1;
+        color: darken($primary, 5%);
+
+    }
+
+    .intro {
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+
+.material-symbols-sharp {
+    // vertical-align: center;
+
+}
+
+.visas-container {
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        grid-template-rows:
+            auto
+            /* h2 */
+            auto
+            /* .purpose */
+            auto
+            /* h4 (Benefits) */
+            auto
+            /* .benefits */
+            auto
+            /* h4 (Requirements) */
+            auto
+            /* .requirements */
+            auto
+            /* .note */
+            auto
+            /* .time */
+            auto;
+        /* button */
+    }
+}
+
+.visa-type {
+    @media screen and (min-width: 768px) {
+        grid-template-rows: subgrid;
+        grid-row: 1;
+        display: grid;
+        grid-template-rows: subgrid;
+        /* Inherit rows from parent */
+        grid-row: 1 / -1;
+        /* Span all rows */
+    }
+
+    background-color: #f4f4f4;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 3rem;
+
+    outline: 1px solid darken($text-primary, 10%);
+
+    box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0);
+
+
+    transition: all 0.3s ease;
+
+
+    .purpose {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1.4rem;
+
+        &::after {
+            content: "";
+            display: block;
+            // margin-top: 0.1rem;
+            width: 60px;
+            height: 5px;
+            background-color: $primary;
+        }
+    }
+
+    .benefits {
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 2em;
+
+        .benefit {
+            word-wrap: break-word;
+            text-wrap: pretty;
+            width: max-content;
+
+            display: block;
+            // border-radius: 2rem;
+            border-left: 3px solid $primary;
+            // background: $accent;
+            // color: $text-primary;
+
+            font-size: 0.9rem;
+            padding: 0.3rem 0.5rem;
+            transform: translateX(0);
+            transition: all 0.3s ease;
+
+
+            &:hover {
+                transform: translateX(5px);
+                border-left: 3px solid darken($primary, 15%);
+
+            }
+        }
+    }
+
+    .requirements {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 0.5rem;
+
+        .requirement {
+            border-left: 3px solid $accent;
+            padding: 0.3rem 0.5rem;
+            transform: translateX(0);
+            transition: all 0.3s ease;
+
+
+            &:hover {
+                transform: translateX(5px);
+                border-left: 3px solid darken($accent, 15%);
+
+            }
+        }
+    }
+
+    .time {
+        max-width: max-content;
+        // padding-right: 0.5rem;
+        margin: 1rem 0;
+        // border-right: 2px solid $primary;
+        font-style: italic;
+
+        &::before {
+            content: "Time: ";
+            font-style: italic;
+            color: lighten($color: black, $amount: 50%);
+            display: inline;
+        }
+    }
+
+
+    button {
+        width: 100%;
+        @include button-enhanced($shimmer: true);
+        font-weight: 300;
+    }
+
+    .note::before {
+        content: "Note: ";
+        color: lighten($color: black, $amount: 50%);
+
+        font-style: italic;
+        display: inline;
+    }
+
+    &:hover {
+
+        box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
+        outline: 1px solid darken($text-primary, 30%);
+
+    }
+}
+
+// Milk
+// Bread
+// Water
+// bakery

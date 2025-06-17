@@ -1,0 +1,266 @@
+@use "../components/" as *;
+@use "../variables/" as *;
+@use "../base/" as *; // Mixins for consistency
+
+@mixin transition($property: all, $duration: 0.3s, $timing-function: ease) {
+    transition: $property $duration $timing-function;
+}
+
+body {
+    background: $text-primary;
+
+}
+
+.container {
+    margin-inline: auto;
+    max-width: 70ch;
+    padding-top: 8rem;
+    padding-inline: 2rem;
+    background-color: $white;
+    border-radius: 8px;
+    background: $text-primary;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); // Initial subtle shadow
+    @include transition(box-shadow);
+
+    &:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); // Slightly more pronounced shadow on hover
+    }
+}
+
+// Headings
+h1,
+h2,
+h3 {
+    color: $primary;
+    border-bottom: 2px solid $primary; // Use primary color for heading borders
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.info {
+    margin-bottom: 3rem;
+}
+
+// Form Elements
+.form-group {
+    margin-bottom: 20px; // Increased margin for better spacing
+}
+
+label {
+    display: block;
+    margin-bottom: 8px; // Increased margin for better spacing
+    font-weight: bold;
+    color: $secondary; // Label text color
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px; // Slightly more padding
+    border: 1px solid #ccc;
+    border-radius: 6px; // Slightly more rounded corners
+    box-sizing: border-box;
+    font-size: 16px;
+    @include transition(border-color, 0.2s);
+    @include transition(box-shadow, 0.2s);
+
+    &:hover {
+        border-color: lighten($primary, 20%); // Lighter primary on hover
+    }
+
+    &:focus {
+        border-color: $primary;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($primary, 0.25); // Subtle primary color glow
+    }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 8px; // Increased spacing
+    transform: scale(1.1); // Slightly larger
+    @include transition(transform);
+
+    &:hover {
+        transform: scale(1.2); // Grow slightly more on hover
+    }
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: inline-flex; // Align checkbox/radio with text
+    align-items: center;
+    margin-right: 20px;
+    font-weight: normal;
+    cursor: pointer;
+
+    &:hover {
+        color: lighten($secondary, 15%); // Slightly lighter text on hover
+    }
+}
+
+// File Upload Section
+.file-upload-section {
+    border: 2px dashed darken($light-grey-bg, 10%);
+    padding: 25px; // More padding
+    margin-top: 25px;
+    background-color: $light-grey-bg;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer; // Indicate the whole section is clickable (via label)
+    @include transition(border-color, 0.3s);
+    @include transition(background-color, 0.3s);
+    @include transition(box-shadow, 0.3s);
+
+    &:hover {
+        border-color: $primary;
+        background-color: darken($light-grey-bg, 3%); // Subtle background change
+        box-shadow: 0 4px 10px rgba($primary, 0.1); // Shadow with primary accent
+    }
+
+    & label {
+        font-weight: normal;
+        cursor: pointer;
+        color: $primary;
+        display: flex; // Align icon and text
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .material-symbols-sharp {
+            font-size: 36px; // Larger icon for visual impact
+            color: $primary;
+            @include transition(transform);
+        }
+
+        &:hover .material-symbols-sharp {
+            transform: translateY(-3px); // Subtle lift for the icon
+        }
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+}
+
+.upload-button {
+    display: inline-block;
+    background-color: $primary;
+    color: $white;
+    padding: 12px 25px; // More padding
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 15px; // More space
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); // Add shadow to button
+    @include transition(background-color);
+    @include transition(box-shadow);
+    @include transition(transform);
+
+    &:hover {
+        background-color: darken($primary, 8%);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); // Darker shadow on hover
+        transform: translateY(-2px); // Subtle lift
+    }
+
+    &:active {
+        background-color: darken($primary, 15%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: translateY(0); // Press effect
+    }
+}
+
+// Submit Button
+button[type="submit"] {
+    margin: 1rem auto;
+    width: 100%;
+    @include button-enhanced(green, $shimmer: true);
+}
+
+// Disclaimer
+.disclaimer {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: lighten($accent, 45%);
+    border-left: 5px solid $accent;
+    color: $secondary;
+    font-size: 0.95em; // Slightly larger font for readability
+    border-radius: 4px; // Consistent rounding
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: $primary;
+        text-decoration: none;
+        font-weight: bold; // Emphasize links
+        @include transition(color);
+
+        &:hover {
+            text-decoration: underline;
+            color: darken($primary, 10%);
+        }
+    }
+}
+
+.payment {
+    background-color: lighten(rgb(68, 138, 68), 45%);
+    border-left: 5px solid green;
+
+}
+
+// Section Headers with Icons
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px; // More space between icon and text
+    margin-bottom: 25px; // More space after header
+    color: $primary;
+
+    .material-symbols-sharp {
+        font-size: inherit; // Larger icons for section headers
+        color: $primary;
+        vertical-align: center;
+        margin-right: 0.2rem;
+        @include transition(transform);
+    }
+
+    h2 {
+        border-bottom: none; // Remove double border from section header h2
+        margin-bottom: 0;
+        padding-bottom: 0;
+        display: inline; // Prevent border from stretching
+    }
+}
+
+// Small text for requirements
+small {
+    color: darken($secondary, 10%); // Slightly darker small text
+    display: block;
+    margin-top: 8px; // More margin
+    font-size: 0.88em;
+}
+
+// Required field indicator
+span[style="color: red;"] {
+    color: $accent !important; // Ensure accent color for required indicator
+    font-weight: bold; // Make it stand out more
+}
+
+// Specific style for input file name display
+span[id$="FileName"] {
+    /* Targets spans ending with FileName */
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: darken($secondary, 5%);
+    font-style: italic;
+}

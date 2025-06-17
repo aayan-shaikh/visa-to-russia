@@ -4,6 +4,10 @@
 main {
     padding-top: 8rem;
     background-color: $text-primary;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 section {

@@ -1,0 +1,395 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../scss/pages/_apply.scss";
+---
+
+<BaseLayout>
+    <div class="container">
+        <h1>Russian Visa Application Form for Indian Citizens</h1>
+        <p class="info">
+            Please provide all required information accurately. This form covers
+            details for both Tourist and E-Visa applications. Ensure all
+            supporting documents are prepared for upload.
+        </p>
+
+        <form
+            action="/submit-visa-application"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+            <div class="section-header">
+                <h2>
+                    <span class="material-symbols-sharp">person</span>Applicant
+                    Personal Details
+                </h2>
+            </div>
+            <div class="form-group">
+                <label for="visaType"
+                    >Visa Type Applying For: <span style="color: red;">*</span
+                    ></label
+                >
+                <select id="visaType" name="visaType" required>
+                    <option value="">-- Select Visa Type --</option>
+                    <option value="tourist">Tourist Visa (Up to 30 Days)</option
+                    >
+                    <option value="evisa">E-Visa (Up to 16 Days)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fullName"
+                    >Full Name (as per Passport): <span style="color: red;"
+                        >*</span
+                    ></label
+                >
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Given Name(s) Last Name"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="dob"
+                    >Date of Birth: <span style="color: red;">*</span></label
+                >
+                <input type="date" id="dob" name="dob" required />
+            </div>
+            <div class="form-group">
+                <label for="gender"
+                    >Gender: <span style="color: red;">*</span></label
+                >
+                <select id="gender" name="gender" required>
+                    <option value="">-- Select --</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="placeOfBirth"
+                    >Place of Birth: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="text"
+                    id="placeOfBirth"
+                    name="placeOfBirth"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="nationality"
+                    >Nationality: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="text"
+                    id="nationality"
+                    name="nationality"
+                    value="Indian"
+                    readonly
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="currentAddress"
+                    >Current Residential Address in India: <span
+                        style="color: red;">*</span
+                    ></label
+                >
+                <input
+                    type="text"
+                    id="currentAddress"
+                    name="currentAddress"
+                    placeholder="Street, City, State, Pincode"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber"
+                    >Phone Number: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    pattern="[0-9]{10}"
+                    placeholder="e.g., 9876543210"
+                    required
+                />
+                <small>Format: 10 digits without spaces or hyphens.</small>
+            </div>
+            <div class="form-group">
+                <label for="email"
+                    >Email Address: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your.email@example.com"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="occupation"
+                    >Occupation/Profession: <span style="color: red;">*</span
+                    ></label
+                >
+                <input type="text" id="occupation" name="occupation" required />
+            </div>
+
+            <div class="section-header">
+                <h2>
+                    <span class="material-symbols-sharp">badge</span>Passport
+                    Details
+                </h2>
+            </div>
+            <div class="form-group">
+                <label for="passportNumber"
+                    >Passport Number: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="text"
+                    id="passportNumber"
+                    name="passportNumber"
+                    maxlength="8"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="passportIssueDate"
+                    >Date of Issue: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="date"
+                    id="passportIssueDate"
+                    name="passportIssueDate"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="passportExpiryDate"
+                    >Date of Expiry: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="date"
+                    id="passportExpiryDate"
+                    name="passportExpiryDate"
+                    required
+                />
+                <small style="color: red;"
+                    >Passport must be valid for at least 6 months beyond your
+                    intended visa expiry date.</small
+                >
+            </div>
+            <div class="form-group">
+                <label for="placeOfIssue"
+                    >Place of Issue: <span style="color: red;">*</span></label
+                >
+                <input
+                    type="text"
+                    id="placeOfIssue"
+                    name="placeOfIssue"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="passportType"
+                    >Type of Passport: <span style="color: red;">*</span></label
+                >
+                <select id="passportType" name="passportType" required>
+                    <option value="">-- Select --</option>
+                    <option value="ordinary">Ordinary Passport</option>
+                    <option value="diplomatic">Diplomatic Passport</option>
+                    <option value="official">Official Passport</option>
+                </select>
+            </div>
+
+            <div class="section-header">
+                <h2>
+                    <span class="material-symbols-sharp">luggage</span>Travel
+                    Details
+                </h2>
+            </div>
+            <div class="form-group">
+                <label for="intendedEntryDate"
+                    >Intended Date of Entry to Russia: <span style="color: red;"
+                        >*</span
+                    ></label
+                >
+                <input
+                    type="date"
+                    id="intendedEntryDate"
+                    name="intendedEntryDate"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="intendedExitDate"
+                    >Intended Date of Exit from Russia: <span
+                        style="color: red;">*</span
+                    ></label
+                >
+                <input
+                    type="date"
+                    id="intendedExitDate"
+                    name="intendedExitDate"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="purposeOfVisit"
+                    >Purpose of Visit: <span style="color: red;">*</span></label
+                >
+                <select id="purposeOfVisit" name="purposeOfVisit" required>
+                    <option value="">-- Select --</option>
+                    <option value="tourism"
+                        >Tourism (for 30-day Tourist Visa)</option
+                    >
+                    <option value="evisa_tourism"
+                        >Tourism (for 14-day E-Visa)</option
+                    >
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="citiesToVisit"
+                    >Cities to visit in Russia (list all): <span
+                        style="color: red;">*</span
+                    ></label
+                >
+                <textarea
+                    id="citiesToVisit"
+                    name="citiesToVisit"
+                    rows="3"
+                    placeholder="e.g., Moscow, St. Petersburg, Kazan"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="accommodationDetails"
+                    >Accommodation Details (Hotel Name(s) & Address/Booking
+                    Confirmation): <span style="color: red;">*</span></label
+                >
+                <textarea
+                    id="accommodationDetails"
+                    name="accommodationDetails"
+                    rows="4"
+                    placeholder="e.g., Hotel XYZ, Moscow, Booking Ref: ABC123, or Host address for E-visa"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="previousRussianVisas"
+                    >Have you ever had a Russian visa before?</label
+                >
+                <div class="radio-group">
+                    <label
+                        ><input
+                            type="radio"
+                            name="previousRussianVisas"
+                            value="yes"
+                            onclick="document.getElementById('lastVisaDetails').style.display='block'"
+                        /> Yes</label
+                    >
+                    <label
+                        ><input
+                            type="radio"
+                            name="previousRussianVisas"
+                            value="no"
+                            checked
+                            onclick="document.getElementById('lastVisaDetails').style.display='none'"
+                        /> No</label
+                    >
+                </div>
+            </div>
+            <div id="lastVisaDetails" class="form-group" style="display: none;">
+                <label for="lastVisaNumber">Last Russian Visa Number:</label>
+                <input type="text" id="lastVisaNumber" name="lastVisaNumber" />
+                <label for="lastVisaDate"
+                    >Date of Last Russian Visa Issue:</label
+                >
+                <input type="date" id="lastVisaDate" name="lastVisaDate" />
+            </div>
+
+            <div class="section-header">
+                <h2>
+                    <span class="material-symbols-sharp">upload_file</span
+                    >Document Uploads
+                </h2>
+            </div>
+
+            <div class="file-upload-section">
+                <label for="passportScan"
+                    >Scanned Copy of Indian Passport (Bio-page & Address page,
+                    JPEG/PDF, max 5MB): <span style="color: red;">*</span
+                    ></label
+                >
+                <input
+                    type="file"
+                    id="passportScan"
+                    name="passportScan"
+                    accept=".jpg, .jpeg, .png, .pdf"
+                    required
+                />
+                <span class="upload-button">Choose File</span>
+                <span id="passportScanFileName">No file chosen</span>
+            </div>
+
+            <div class="file-upload-section">
+                <label for="photoUpload"
+                    >Recent Passport-sized Photo (3.5x4.5 cm, white background,
+                    JPEG, max 5MB): <span style="color: red;">*</span></label
+                >
+                <input
+                    type="file"
+                    id="photoUpload"
+                    name="photoUpload"
+                    accept=".jpg, .jpeg, .png"
+                    required
+                />
+                <span class="upload-button">Choose File</span>
+                <span id="photoUploadFileName">No file chosen</span>
+            </div>
+            <div class="disclaimer payment">
+                <h3>Payment</h3>
+                <p>
+                    Payment must be made within 24 hours of submitting this form
+                    to be considered for application
+                </p>
+                <div class="form-group">
+                    <label
+                        ><input type="checkbox" name="agreeToTerms" required /> I
+                        agree to paying within 24 hours <span
+                            style="color: red;">*</span
+                        ></label
+                    >
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <h3>Important Disclaimer:</h3>
+                <p>
+                    By submitting this form, you certify that all information
+                    provided is true and accurate to the best of your knowledge.
+                    Providing false information can lead to visa rejection and
+                    legal consequences. We value your privacy; all submitted
+                    data will be handled securely and in accordance with our <a
+                        href="/privacy-policy"
+                        target="_blank">Privacy Policy</a
+                    >.
+                </p>
+                <div class="form-group">
+                    <label
+                        ><input type="checkbox" name="agreeToTerms" required /> I
+                        agree to the <a
+                            href="/terms-and-conditions"
+                            target="_blank">Terms and Conditions</a
+                        > and acknowledge the Privacy Policy. <span
+                            style="color: red;">*</span
+                        ></label
+                    >
+                </div>
+            </div>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</BaseLayout>
