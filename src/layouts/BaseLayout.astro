@@ -9,9 +9,12 @@ const nav_links = [
   { name: "Visa Types", href: "/about" },
   { name: "How It Works", href: "/#" },
   { name: "Why Choose Us", href: "/#" },
-  { name: "FAQs", href: "/#" },
+  { name: "FAQs", href: "/faq" },
   { name: "Contact", href: "/contact" },
 ];
+
+import { img } from "astro:assets";
+import logo from "../../public/visatorussia.png";
 
 const { title, description = "Visa to Russia from India" } = Astro.props;
 ---
@@ -55,7 +58,10 @@ const { title, description = "Visa to Russia from India" } = Astro.props;
     <nav class="navbar" id="navbar">
       <div class="navbar__container">
         <a href="/" class="navbar__logo">
-          <span class="navbar__logo-icon">🇷🇺</span>
+          <span class="navbar__logo-icon">
+            <!-- <img id="navbar__img" src={logo.src} alt="" /> -->
+            🇷🇺
+          </span>
           Visa to Russia
         </a>
 
